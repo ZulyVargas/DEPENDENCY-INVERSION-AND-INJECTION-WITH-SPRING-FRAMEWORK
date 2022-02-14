@@ -15,6 +15,9 @@ Para ilustrar el uso del framework Spring, y el ambiente de desarrollo para el u
 	* GrammarChecker será un bean, que tiene como dependencia algo de tipo 'SpellChecker'.
 	* EnglishSpellChecker y SpanishSpellChecker son los dos posibles candidatos a ser inyectados. Se debe seleccionar uno, u otro, mas NO ambos (habría conflicto de resolución de dependencias). Por ahora haga que se use EnglishSpellChecker.
  
+	Para desarrollar este punto agregamos la etiqueta **@Service** en la clase **GrammarChecker**. Para indicar la dependencia a inyectar agregamos la etiqueta 
+	**@Autowired** en el método set de la clase **SpellChecker**. En este caso, para inyectar EnglishSpeaker agregamos la etiqueta **@Component** en esta clase.
+
 5.	Haga un programa de prueba, donde se cree una instancia de GrammarChecker mediante Spring, y se haga uso de la misma:
 
 	```java
@@ -24,5 +27,14 @@ Para ilustrar el uso del framework Spring, y el ambiente de desarrollo para el u
 		System.out.println(gc.check("la la la "));
 	}
 	```
-	
+	Se realizó la prueba en la clase Main y se obtiene que se inyectó EnglishSpellChecker como se esperaba.
+	![](img/pruebaMain.png)
+
 6.	Modifique la configuración con anotaciones para que el Bean ‘GrammarChecker‘ ahora haga uso del  la clase SpanishSpellChecker (para que a GrammarChecker se le inyecte EnglishSpellChecker en lugar de  SpanishSpellChecker. Verifique el nuevo resultado.
+
+	Para verificar la inyección con la clase **SpanishSpellChecker** se agrega la etiqueta **@Component** en esta clase y se suprime de la clase EnglishSpellChecker para no tener problemas con la resolución de dependencias.
+	![](img/pruebaMain_espanol.png)
+
+
+
+

@@ -27,7 +27,7 @@ public class BlueprintsServices {
     @Autowired
     BlueprintsPersistence bpp;
 
-    @Autowired
+    //@Autowired
     BlueprintsFilters bpf;
     
     public void addNewBlueprint(Blueprint bp) throws BlueprintPersistenceException {
