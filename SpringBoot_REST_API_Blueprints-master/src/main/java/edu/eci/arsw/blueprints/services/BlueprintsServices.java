@@ -27,7 +27,7 @@ public class BlueprintsServices {
     @Autowired
     BlueprintsPersistence bpp;
 
-    //@Autowired
+    @Autowired
     BlueprintsFilters bpf;
     
     public void addNewBlueprint(Blueprint bp) throws BlueprintPersistenceException {
@@ -35,7 +35,8 @@ public class BlueprintsServices {
     }
     
     public Set<Blueprint> getAllBlueprints(){
-        return bpp.getAllBlueprints();
+        //Filter before return
+        return bpf.filterBlueprints(bpp.getAllBlueprints());
     }
     
     /**
@@ -47,7 +48,7 @@ public class BlueprintsServices {
      */
     public Blueprint getBlueprint(String author,String name) throws BlueprintNotFoundException{
         //throw new UnsupportedOperationException("Not supported yet.");
-        return bpp.getBlueprint(author, name);
+        return bpf.filterBlueprint(bpp.getBlueprint(author, name));
     }
     
     /**
@@ -57,7 +58,18 @@ public class BlueprintsServices {
      * @throws BlueprintNotFoundException if the given author doesn't exist
      */
     public Set<Blueprint> getBlueprintsByAuthor(String author) throws BlueprintNotFoundException{
-        return bpp.getBlueprintsByAuthor(author);
+        return bpf.filterBlueprints(bpp.getBlueprintsByAuthor(author));
     }
-    
+
+    /**
+     *
+     * @param blueprints list of blueprints.
+     * @return list of blueprints with the filter applied.
+     * @throws BlueprintNotFoundException
+     */
+    public Set<Blueprint> filter(Set<Blueprint> blueprints) throws BlueprintNotFoundException{
+        return bpf.filterBlueprints(blueprints);
+    }
+
+
 }
