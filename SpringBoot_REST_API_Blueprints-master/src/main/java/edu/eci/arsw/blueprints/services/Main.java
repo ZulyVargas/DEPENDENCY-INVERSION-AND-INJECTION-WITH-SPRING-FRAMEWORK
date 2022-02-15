@@ -32,14 +32,14 @@ public class Main {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
         BlueprintsServices bps = ac.getBean(BlueprintsServices.class);
         Blueprint bp0 = new Blueprint("mia", "firstPrint", new Point[]{new Point(40, 40),new Point(40, 40),new Point(44, 47),new Point(60, 70), new Point(80, 47),new Point(45, 47) });
-        System.out.println("Before the redundancy filter " + bp0.toString() );
+        System.out.println("Before the subsampling filter " + bp0.toString() );
         for (Point p : bp0.getPoints() ){
             System.out.print("(" + p.getX() + "," + p.getY() + ")" + ",");
         }
 
         System.out.println();
         bps.addNewBlueprint(bp0);
-        System.out.println("After the redundancy filter " +bps.getBlueprint("mia", "firstPrint").toString() );
+        System.out.println("After the subsampling filter " +bps.getBlueprint("mia", "firstPrint").toString() );
         for (Point p : bp0.getPoints()){
             System.out.print("(" + p.getX() + "," + p.getY() + ")" + ",");
         }
@@ -61,5 +61,6 @@ public class Main {
             System.out.print("(" + p.getX() + "," + p.getY() + ")" + ",");
         }
     }
-
 }
+
+

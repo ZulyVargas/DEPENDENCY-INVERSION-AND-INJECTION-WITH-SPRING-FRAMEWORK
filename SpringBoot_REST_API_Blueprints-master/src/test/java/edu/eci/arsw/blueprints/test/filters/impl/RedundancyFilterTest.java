@@ -26,8 +26,6 @@ public class RedundancyFilterTest {
         assertEquals(4, rf.filterBlueprint(bp0).getPoints().size());
 
     }
-
-
     @Test
     public void shouldApplyRedundancyFilterInBlueprints() throws BlueprintPersistenceException, BlueprintNotFoundException {
         RedundancyFilter rf = new RedundancyFilter();
@@ -36,10 +34,9 @@ public class RedundancyFilterTest {
         Point[] pts1=new Point[]{new Point(30, 40),new Point(40, 40),new Point(24, 47),new Point(24, 47), new Point(80, 47),new Point(80, 47) };
         Point[] pts2=new Point[]{new Point(24, 402),new Point(24, 402),new Point(24, 47),new Point(24, 47), new Point(10, 67),new Point(70, 47),new Point(70, 47) };
 
-
         Blueprint bp0=new Blueprint("jim", "jimPaint",pts0);
         Blueprint bp1=new Blueprint("jon", "jonPaint",pts1);
-        Blueprint bp2=new Blueprint("jan", "janPaint",pts1);
+        Blueprint bp2=new Blueprint("jan", "janPaint",pts2);
 
         Set<Blueprint> blueprints = new HashSet<Blueprint>();
 
